@@ -1,4 +1,9 @@
 # English-Spacy-extractor
+------------
+## Setup
+`pip install -r requirements.txt`
+-----------
+
 This code allows you to grab only the words/tokens that you want information for in a sentence
 ### Input : Excel file with a columns which contains sentences as rows
 ![input image](https://github.com/munzzz5/English-Spacy-extractor/blob/master/inputSample.PNG)
