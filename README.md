@@ -1,8 +1,9 @@
 # English-Spacy-extractor
 This code allows you to grab only the words/tokens that you want information for in a sentence
 ### Input : Excel file with a columns which contains sentences as rows
-
+![input image](https://github.com/munzzz5/English-Spacy-extractor/blob/master/inputSample.PNG)
 ### Output : A new excel file (as prompted) (image attached)
+![output image](https://github.com/munzzz5/English-Spacy-extractor/blob/master/output.PNG)
 ------------
 # Usage
 ## How it Works:
