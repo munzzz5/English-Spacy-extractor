@@ -66,6 +66,7 @@ def getColumnAndExtract():
             else:
                 print("Word isnt there! Try again\n\n")
                 continue
+    saveAndExit(outDf)
 
 
 if __name__ == "__main__":
