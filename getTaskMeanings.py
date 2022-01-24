@@ -7,8 +7,8 @@ nlp = spacy.load("en_core_web_md")
 
 def getWordData(doc, inword):
 
-    dictWord = [{'word': word.text, 'POS': word.pos_, 'DEP': word.dep_, 'left': [tok.text for tok in word.lefts], 'right': [
-        tok.text for tok in word.rights], 'lemma': word.lemma_} for word in doc if word.text == inword]
+    dictWord = [{'word': word.text, 'POS': word.pos_, 'DEP': word.dep_, 'left': [tok.text if tok else 0 for tok in word.lefts], 'right': [
+        tok.text if tok else 0 for tok in word.rights], 'lemma': word.lemma_} for word in doc if word.text == inword]
     return dictWord[0]
 
 
@@ -18,7 +18,8 @@ def getExcel(fileName):
 
 
 def saveAndExit(outDf):
-    print(outDf)
+    print(len(outDf['Task']), len(outDf['word']), len(outDf['POS']), len(
+        outDf['DEP']), len(outDf['lemma']), len(outDf['left']), len(outDf['right']))
     print('saving and exiting\n')
     pd.DataFrame(outDf).to_excel(
         input('Enter file to save')+".xlsx")
@@ -34,7 +35,7 @@ def getColumnAndExtract():
         print(task)
         doc = nlp(task)
         # print(doc['check'].lemma_)
-        outDf['Task'].append(task)
+
         wordList = [token.text for token in doc]
         # 1. ask user for important words
         # 2. if word in doc, get meaning, add to list
@@ -52,10 +53,12 @@ def getColumnAndExtract():
             elif inputWord == '2':  # exit keyword
                 saveAndExit(outDf)
             if inputWord in wordList:
+
                 dTemp = getWordData(doc, inputWord)
                 if not firstWord:
                     outDf['Task'].append('')
                 else:
+                    outDf['Task'].append(task)
                     firstWord = False
                 for key in dTemp:
                     outDf[key].append(dTemp[key])
