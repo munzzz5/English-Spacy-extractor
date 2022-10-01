@@ -20,4 +20,6 @@ Inputs:
     * 1 - skip to next sentence
     * 2 - end the work now and save file
     
-
+# Improvement Ideas
+1. adding tools to allow scraping directly from web in required format
+2. adding more output formats 
